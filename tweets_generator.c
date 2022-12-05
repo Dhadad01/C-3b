@@ -79,9 +79,9 @@ static void free_str(void *s1){
   free (str1);
 }
 static void* mem_cpy_str(void *s1){
-  s1 = (char*) s1;
-  char* copy = malloc (strlen (s1)+1);
-  memcpy (copy,s1,sizeof (char));
+  char *str1 = (char*) s1;
+  char* copy = malloc (strlen (str1)+1);
+  strcpy (copy,str1);
   return copy;
 }
 static bool is_last_str(void *s1){

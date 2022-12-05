@@ -137,6 +137,7 @@ void free_markov_chain (MarkovChain **ptr_chain)
   *ptr_chain = NULL;
 }
 //search in the void
+
 NextNodeCounter *search_frequency_list(
     MarkovNode *first_node,MarkovNode *second_node,MarkovChain markov_chain) {
   void *word = second_node->data;
