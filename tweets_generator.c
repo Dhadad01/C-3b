@@ -42,10 +42,8 @@ int fill_database (FILE *fp, int words_to_read, MarkovChain
         {
           counter++;
         }
-
         if (temp && last_node
-            && strcmp (&last_node->data->data[strlen (last_node
-            ->data->data)- 1], "."))
+            && markov_chain->is_last(last_node->data->data))
         {
           if(!add_node_to_counter_list
               (last_node->data, temp->data,markov_chain)){
