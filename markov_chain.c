@@ -91,9 +91,10 @@ first_node, int max_length)
   markov_chain->print_func(first_node->data);
   for (int i = 1; i < max_length; i++)
   {
-    MarkovNode *node = get_next_random_node (first_node);
-    markov_chain->print_func(node);
-    if(markov_chain->is_last(node->data)){
+
+    first_node = get_next_random_node (first_node);
+    markov_chain->print_func(first_node->data);
+    if(markov_chain->is_last(first_node->data)){
       break;
     }
   }

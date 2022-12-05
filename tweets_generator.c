@@ -12,6 +12,7 @@
 #define INVALID_FILE "The given file is invalid.\n"
 #define INVALID_NUM_OF_ARGS "Usage:invalid num of args"
 #define MAX_LENGTH_TWEET 1000
+#define MAX_LEN_OF_TWEET 20
 
 #define FOUR 4
 #define THREE 3
@@ -22,6 +23,10 @@ int fill_database (FILE *fp, int words_to_read, MarkovChain
 *markov_chain)
 {
   {
+    if(!fp||!markov_chain)
+    {
+      return EXIT_FAILURE;
+    }
     int counter = -1;
     if (words_to_read)
     {
@@ -32,7 +37,6 @@ int fill_database (FILE *fp, int words_to_read, MarkovChain
     while (fgets (line, MAX_LENGTH_TWEET + 1, fp) &&
            counter < words_to_read)
     {
-
       char *token = strtok (line, " \n");
       Node *last_node = NULL;
       while (token&&counter < words_to_read)
@@ -43,7 +47,7 @@ int fill_database (FILE *fp, int words_to_read, MarkovChain
           counter++;
         }
         if (temp && last_node
-            && markov_chain->is_last(last_node->data->data))
+            && !markov_chain->is_last(last_node->data->data))
         {
           if(!add_node_to_counter_list
               (last_node->data, temp->data,markov_chain)){
@@ -70,7 +74,7 @@ return result;
 };
 static void print_str(void *s1){
   char* str1 = (char*) s1;
-  printf ("%s",str1);
+  printf ("%s ",str1);
 }
 static void free_str(void *s1){
   char* str1 = (char*) s1;
@@ -149,7 +153,7 @@ int main (int argc, char *argv[])
   {
     printf ("Tweet %d: ",i+1);
     generate_random_sequence
-        (markov_chain, NULL, MAX_LENGTH_TWEET);
+        (markov_chain, NULL, MAX_LEN_OF_TWEET);
   }
   free_markov_chain (&markov_chain);
   return EXIT_SUCCESS;
