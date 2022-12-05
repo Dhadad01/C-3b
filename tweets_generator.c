@@ -154,6 +154,7 @@ int main (int argc, char *argv[])
     printf ("Tweet %d: ",i+1);
     generate_random_sequence
         (markov_chain, NULL, MAX_LEN_OF_TWEET);
+    printf ("\n");
   }
   free_markov_chain (&markov_chain);
   return EXIT_SUCCESS;
