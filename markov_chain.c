@@ -95,6 +95,7 @@ first_node, int max_length)
     first_node = get_next_random_node (first_node);
     markov_chain->print_func(first_node->data);
     if(markov_chain->is_last(first_node->data)){
+      printf ("\n");
       break;
     }
   }
