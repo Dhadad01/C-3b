@@ -57,19 +57,19 @@ static void print_func_int(void *x){
         second = transitions[i][1];
         if ((first == *xi) && (first > second)) // its a ladder
         {
-          printf("-snake to %d ->",second);
+          printf(" -snake to %d ->",second);
           return;
         }
         else if ((first == *xi) && (first < second)) // its a ladder
         {
-          printf("-ladder to %d ->",second);
+          printf(" -ladder to %d ->",second);
           return;
         }
       }
     }
     if (*xi != BOARD_SIZE)
     {
-      printf(" ->"); // didnt finished - -> to next
+      printf(" -> "); // didnt finished - -> to next
     }
   }
 }
