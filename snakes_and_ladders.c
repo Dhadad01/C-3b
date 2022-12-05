@@ -233,4 +233,14 @@ int main(int argc, char *argv[])
     fprintf (stdout, ALLOCATION_ERROR_MASSAGE);
     return EXIT_FAILURE;
   }
+  for (int i = 0; i < num_of_sentences; ++i)
+  {
+    printf ("Random Walk %d:", i + 1);
+    MarkovNode *first = markov_chain->database->first->data;
+    generate_random_sequence (markov_chain, first
+        , MAX_GENERATION_LENGTH);
+    printf ("\n");
+  }
+  free_markov_chain (&markov_chain);
+  return EXIT_SUCCESS;
 }

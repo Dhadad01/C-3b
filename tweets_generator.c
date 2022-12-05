@@ -94,69 +94,69 @@ static bool is_last_str(void *s1){
   return false;
 }
 
-int main (int argc, char *argv[])
-{
-  if (argc > FIVE || argc < FOUR)
-  {
-    fprintf (stdout, INVALID_NUM_OF_ARGS);
-    return EXIT_FAILURE;
-  }
-  if (!argv[THREE])
-  {
-    fprintf (stdout, INVALID_FILE);
-    return EXIT_FAILURE;
-  }
-  FILE *fp = fopen (argv[THREE], "r");
-  if (!fp)
-  {
-    fprintf (stdout, INVALID_FILE);
-    return EXIT_FAILURE;
-  }
-  //valid input - check on the last var
-  unsigned int seed = (unsigned int) strtol (argv[1],NULL,TEN);
-  int num_of_tweets = (int) strtol (argv[2], NULL, TEN);
-  int words_to_read;
-  if (argc == FOUR)
-  {
-    words_to_read = ZERO;//all
-  }
-  else
-  {
-    words_to_read = (int) strtol (argv[FOUR], NULL, TEN);
-  }
-  MarkovChain *markov_chain=(MarkovChain *) malloc (sizeof (MarkovChain));
-  if(!markov_chain){
-    fprintf (stdout,ALLOCATION_ERROR_MASSAGE);
-    return EXIT_FAILURE;
-  }
-  markov_chain->database = (LinkedList *) malloc (sizeof (LinkedList));
-  if(!markov_chain->database){
-    fprintf (stdout,ALLOCATION_ERROR_MASSAGE);
-    free (markov_chain);
-    return EXIT_FAILURE;
-  }
-  markov_chain->print_func = print_str;
-  markov_chain->comp_func = comp_func_str;
-  markov_chain->free_data = free_str;
-  markov_chain->copy_func = mem_cpy_str;
-  markov_chain->is_last = is_last_str;
-  markov_chain->database->first = NULL;
-  markov_chain->database->last = NULL;
-  markov_chain->database->size = ZERO;
-  if (fill_database (fp, words_to_read, markov_chain)){
-    free_markov_chain (&markov_chain);
-    return EXIT_FAILURE;
-  }
-  fclose(fp);
-  srand (seed);
-  for (int i = ZERO; i < num_of_tweets; i++)
-  {
-    printf ("Tweet %d: ",i+1);
-    generate_random_sequence
-        (markov_chain, NULL, MAX_LEN_OF_TWEET);
-  }
-  free_markov_chain (&markov_chain);
-  return EXIT_SUCCESS;
-}
+//int main (int argc, char *argv[])
+//{
+//  if (argc > FIVE || argc < FOUR)
+//  {
+//    fprintf (stdout, INVALID_NUM_OF_ARGS);
+//    return EXIT_FAILURE;
+//  }
+//  if (!argv[THREE])
+//  {
+//    fprintf (stdout, INVALID_FILE);
+//    return EXIT_FAILURE;
+//  }
+//  FILE *fp = fopen (argv[THREE], "r");
+//  if (!fp)
+//  {
+//    fprintf (stdout, INVALID_FILE);
+//    return EXIT_FAILURE;
+//  }
+//  //valid input - check on the last var
+//  unsigned int seed = (unsigned int) strtol (argv[1],NULL,TEN);
+//  int num_of_tweets = (int) strtol (argv[2], NULL, TEN);
+//  int words_to_read;
+//  if (argc == FOUR)
+//  {
+//    words_to_read = ZERO;//all
+//  }
+//  else
+//  {
+//    words_to_read = (int) strtol (argv[FOUR], NULL, TEN);
+//  }
+//  MarkovChain *markov_chain=(MarkovChain *) malloc (sizeof (MarkovChain));
+//  if(!markov_chain){
+//    fprintf (stdout,ALLOCATION_ERROR_MASSAGE);
+//    return EXIT_FAILURE;
+//  }
+//  markov_chain->database = (LinkedList *) malloc (sizeof (LinkedList));
+//  if(!markov_chain->database){
+//    fprintf (stdout,ALLOCATION_ERROR_MASSAGE);
+//    free (markov_chain);
+//    return EXIT_FAILURE;
+//  }
+//  markov_chain->print_func = print_str;
+//  markov_chain->comp_func = comp_func_str;
+//  markov_chain->free_data = free_str;
+//  markov_chain->copy_func = mem_cpy_str;
+//  markov_chain->is_last = is_last_str;
+//  markov_chain->database->first = NULL;
+//  markov_chain->database->last = NULL;
+//  markov_chain->database->size = ZERO;
+//  if (fill_database (fp, words_to_read, markov_chain)){
+//    free_markov_chain (&markov_chain);
+//    return EXIT_FAILURE;
+//  }
+//  fclose(fp);
+//  srand (seed);
+//  for (int i = ZERO; i < num_of_tweets; i++)
+//  {
+//    printf ("Tweet %d: ",i+1);
+//    generate_random_sequence
+//        (markov_chain, NULL, MAX_LEN_OF_TWEET);
+//  }
+//  free_markov_chain (&markov_chain);
+//  return EXIT_SUCCESS;
+//}
 
 
