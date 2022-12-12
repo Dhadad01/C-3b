@@ -72,10 +72,7 @@ int result = strcmp(str1, str2);
 // Return the result of the comparison
 return result;
 };
-static void print_str(void *s1){
-  char* str1 = (char*) s1;
-  printf ("%s ",str1);
-}
+
 static void free_str(void *s1){
   char* str1 = (char*) s1;
   free (str1);
@@ -92,6 +89,15 @@ static bool is_last_str(void *s1){
     return true;
   }
   return false;
+}
+static void print_str(void *s1){
+    char* str1 = (char*) s1;
+    if(is_last_str(str1)){
+        printf("%s",str1);
+    }
+    else{
+        printf ("%s ",str1);
+    }
 }
 
 int main (int argc, char *argv[])

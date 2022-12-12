@@ -7,7 +7,9 @@
 #include "linked_list.h"
 #include "markov_chain.h"
 #define ALLOCATION_ERROR "Allocation failure"
-
+#ifdef OH_TESTS
+#include "/cs/usr/oryan.hassidim/ex3b/ex3b-oryan.hassidim/oh_tests/oh_tests_helpers.h"
+#endif // OH_TESTS
 /**
 * Get random number between 0 and max_number [0, max_number).
 * @param max_number maximal number to return (not including)
